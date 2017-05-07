@@ -33,7 +33,7 @@ app.get("/today", function(req, res) {
 });
 
 app.get("/tomorrow", function(req, res) {
-  console.log(req.query);
+  console.log(req);
   var date = new Date();
   var day = (date.getDate() + 1).toString();
   var month = (date.getMonth() + 1).toString();
