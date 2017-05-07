@@ -32,7 +32,7 @@ app.get("/today", function(req, res) {
   }
 });
 
-app.get("/:name", function(req, res) {
+app.get("/name/:name", function(req, res) {
 
   var date = new Date();
 
