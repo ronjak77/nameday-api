@@ -31,3 +31,17 @@ app.get("/today", function(req, res) {
     res.status(200).json({'name': heroes, 'date': date});
   }
 });
+
+app.get("/tomorrow", function(req, res) {
+  console.log(req.query.api_key);
+  var date = new Date();
+  var day = date.getDate().toString();
+  var month = (date.getMonth() + 1).toString();
+  // todo: case where it's the last day of the month
+  var heroes = names[month][day+1];
+  if (heroes.length < 0  ) {
+    handleError(res, err.message, "Failed to get names.");
+  } else {
+    res.status(200).json({'name': heroes, 'date': date});
+  }
+});
