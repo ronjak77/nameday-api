@@ -40,7 +40,7 @@ app.get("/:month/:day", function(req, res) {
   if (heroes.length < 0  ) {
     handleError(res, err.message, "Failed to get names.");
   } else {
-    res.status(200).json({'name': heroes, 'date': date});
+    res.status(200).json({'name': heroes});
   }
 });
 
