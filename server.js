@@ -28,22 +28,37 @@ app.get("/today", function(req, res) {
   if (heroes.length < 0  ) {
     handleError(res, err.message, "Failed to get names.");
   } else {
-    res.status(200).json({name: heroes, date: date});
+    res.status(200).json({'name': heroes, 'date': date});
   }
 });
 
-app.get("/tomorrow", function(req, res) {
-  console.log("API KEY: " + req.query.api_key);
+
+app.get("/:month/:day", function(req, res) {
   if(req.query.api_key === process.env.ALLOWED_KEY) {
-    var date = new Date();
-    var day = (date.getDate() + 1).toString();
-    var month = (date.getMonth() + 1).toString();
-    // todo: case where it's the last day of the month
+    var month = req.params.month.toString();
+    var day = req.params.day.toString();
     var heroes = names[month][day];
     if (heroes.length < 0  ) {
       handleError(res, err.message, "Failed to get names.");
     } else {
-      res.status(200).json({name: heroes, date: date});
+      res.status(200).json({'name': heroes, 'date': date});
+    }
+  } else {
+    res.status(403).json({status: "Not authorized"});
+  }
+});
+
+
+app.get("/tomorrow", function(req, res) {
+  if(req.query.api_key === process.env.ALLOWED_KEY) {
+    var date = new Date();
+    var day = (date.getDate() + 1).toString();
+    var month = (date.getMonth() + 1).toString();
+    var heroes = names[month][day];
+    if (heroes.length < 0  ) {
+      handleError(res, err.message, "Failed to get names.");
+    } else {
+      res.status(200).json({'name': heroes, 'date': date});
     }
   } else {
     res.status(403).json({status: "Not authorized"});
