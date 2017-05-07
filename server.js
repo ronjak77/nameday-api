@@ -33,12 +33,12 @@ app.get("/today", function(req, res) {
 });
 
 app.get("/tomorrow", function(req, res) {
-  console.log(req.query.api_key);
+  console.log(req.query);
   var date = new Date();
-  var day = date.getDate().toString();
+  var day = (date.getDate() + 1).toString();
   var month = (date.getMonth() + 1).toString();
   // todo: case where it's the last day of the month
-  var heroes = names[month][day+1];
+  var heroes = names[month][day];
   if (heroes.length < 0  ) {
     handleError(res, err.message, "Failed to get names.");
   } else {
