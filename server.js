@@ -1,6 +1,7 @@
 var express = require("express");
 var path = require("path");
 var names = require("./resources/nimet.json");
+var names2 = require("./resources/nimet2.json");
 
 var app = express();
 app.use(express.static(__dirname + "/public"));
@@ -37,7 +38,7 @@ app.get("/name/:name", function(req, res) {
   var date = new Date();
 
   for (var i = 12; i >= 0; i--) {
-    var month = names[i];
+    var month = names2[i];
     for (var j = month.length - 1; j >= 0; j--) {
       console.log(month[j]);
     }
