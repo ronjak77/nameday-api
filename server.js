@@ -34,17 +34,13 @@ app.get("/today", function(req, res) {
 
 
 app.get("/:month/:day", function(req, res) {
-  if(req.query.api_key === process.env.ALLOWED_KEY) {
-    var month = req.params.month.toString();
-    var day = req.params.day.toString();
-    var heroes = names[month][day];
-    if (heroes.length < 0  ) {
-      handleError(res, err.message, "Failed to get names.");
-    } else {
-      res.status(200).json({'name': heroes, 'date': date});
-    }
+  var month = req.params.month.toString();
+  var day = req.params.day.toString();
+  var heroes = names[month][day];
+  if (heroes.length < 0  ) {
+    handleError(res, err.message, "Failed to get names.");
   } else {
-    res.status(403).json({status: "Not authorized"});
+    res.status(200).json({'name': heroes, 'date': date});
   }
 });
 
