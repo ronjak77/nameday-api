@@ -36,16 +36,21 @@ app.get("/today", function(req, res) {
 app.get("/name/:name", function(req, res) {
 
   var date = new Date();
+  var result = "";
 
-  for (var i = 12; i >= 0; i--) {
+  for (var i = 11; i >= 0; i--) {
     var month = names2[i];
+    console.log(month);
     for (var j = month.length - 1; j >= 0; j--) {
-      console.log(month[j]);
+      if(month[j].indexOf(req.params.name) >= 0) {
+        result = j + ". " + i + ". ";
+        break;
+      }
     }
   }
 
-  if(date) {
-    res.status(200).json({'name': req.params.name, 'date': date});
+  if(result.length > 0) {
+    res.status(200).json({'name': req.params.name, 'date': result});
   }
   else {
     handleError(res, err.message, "Failed to find date.");
