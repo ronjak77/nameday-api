@@ -32,18 +32,40 @@ app.get("/today", function(req, res) {
   }
 });
 
+app.get("/:name", function(req, res) {
 
-app.get("/:month/:day", function(req, res) {
-  var month = req.params.month.toString();
-  var day = req.params.day.toString();
-  var heroes = names[month][day];
-  if (heroes.length < 0  ) {
-    handleError(res, err.message, "Failed to get names.");
-  } else {
-    res.status(200).json({'name': heroes});
+  var date = new Date();
+
+  for (var i = 12; i >= 0; i--) {
+    var month = names[i];
+    for (var j = month.length - 1; j >= 0; j--) {
+      console.log(month[j]);
+    }
   }
+
+  if(date) {
+    res.status(200).json({'name': req.params.name, 'date': date});
+  }
+  else {
+    handleError(res, err.message, "Failed to find date.");
+  }
+
 });
 
+app.get("/:month/:day", function(req, res) {
+  if(req.query.api_key === process.env.ALLOWED_KEY) {
+    var month = req.params.month.toString();
+    var day = req.params.day.toString();
+    var heroes = names[month][day];
+
+    if(heroes && heroes.length > 0) {
+      res.status(200).json({'name': heroes});
+    }
+    else {
+      handleError(res, err.message, "Failed to get names.");
+    }
+  }
+});
 
 app.get("/tomorrow", function(req, res) {
   if(req.query.api_key === process.env.ALLOWED_KEY) {
