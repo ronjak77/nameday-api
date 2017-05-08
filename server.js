@@ -25,40 +25,40 @@ function formatToHuman(month, day) {
   var monthName;
   switch(month) {
     case 1:
-      monthName = "Tammi";
+      monthName = "tammi";
       break;
     case 2:
-      monthName = "Helmi";
+      monthName = "helmi";
       break;
     case 3:
-      monthName = "Maalis";
+      monthName = "maalis";
       break;
     case 4:
-      monthName = "Huhti";
+      monthName = "huhti";
       break;
     case 5:
-      monthName = "Touko";
+      monthName = "touko";
       break;
     case 6:
-      monthName = "Kesä";
+      monthName = "kesä";
       break;
     case 7:
-      monthName = "Heinä";
+      monthName = "heinä";
       break;
     case 8:
-      monthName = "Elo";
+      monthName = "elo";
       break;
     case 9:
-      monthName = "Syys";
+      monthName = "syys";
       break;
     case 10:
-      monthName = "Loka";
+      monthName = "loka";
       break;
     case 11:
-      monthName = "Marras";
+      monthName = "marras";
       break;
     case 12:
-      monthName = "Joulu";
+      monthName = "joulu";
       break;
     default:
       monthName = "";
