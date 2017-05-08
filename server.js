@@ -21,13 +21,59 @@ function handleError(res, reason, message, code) {
   res.status(code || 500).json({"error": message});
 }
 
+function formatToHuman(month, day) {
+  var monthName;
+  switch(month) {
+    case 1:
+      monthName = "Tammi";
+      break;
+    case 2:
+      monthName = "Helmi";
+      break;
+    case 3:
+      monthName = "Maalis";
+      break;
+    case 4:
+      monthName = "Huhti";
+      break;
+    case 5:
+      monthName = "Touko";
+      break;
+    case 6:
+      monthName = "Kesä";
+      break;
+    case 7:
+      monthName = "Heinä";
+      break;
+    case 8:
+      monthName = "Elo";
+      break;
+    case 9:
+      monthName = "Syys";
+      break;
+    case 10:
+      monthName = "Loka";
+      break;
+    case 11:
+      monthName = "Marras";
+      break;
+    case 12:
+      monthName = "Joulu";
+      break;
+    default:
+      monthName = "";
+  }
+  var formattedString = "" + monthName + "kuun " + day + ".";
+  return formattedString;
+}
+
 app.get("/today", function(req, res) {
   var date = new Date();
   var day = date.getDate().toString();
   var month = (date.getMonth() + 1).toString();
   var heroes = names[month][day];
   if (heroes.length < 0  ) {
-    handleError(res, err.message, "Failed to get names.");
+    handleError(res, "Failed to get names.", "Failed to get names.");
   } else {
     res.status(200).json({'name': heroes, 'date': date});
   }
@@ -35,25 +81,26 @@ app.get("/today", function(req, res) {
 
 app.get("/name/:name", function(req, res) {
 
-  var date = new Date();
   var result = "";
+  var resultMsg = "";
+  var name = req.params.name.charAt(0).toUpperCase() + req.params.name.slice(1);
 
   for (var i = 11; i >= 0; i--) {
     var month = names2[i];
-    console.log(month);
     for (var j = month.length - 1; j >= 0; j--) {
-      if(month[j].indexOf(req.params.name) >= 0) {
-        result = j + ". " + i + ". ";
+      if(month[j].indexOf(name) >= 0) {
+        result = (j+1) + "." + (i+1) + ".";
+        resultMsg = formatToHuman(i+1, j+1);
         break;
       }
     }
   }
 
   if(result.length > 0) {
-    res.status(200).json({'name': req.params.name, 'date': result});
+    res.status(200).json({'name': req.params.name, 'date': result, 'resultMsg': resultMsg});
   }
   else {
-    handleError(res, err.message, "Failed to find date.");
+    handleError(res, "Failed to find date.", ("Failed to find any namedays for input " + req.params.name ) );
   }
 
 });
