@@ -97,7 +97,7 @@ app.get("/name/:name", function(req, res) {
   }
 
   if(result.length > 0) {
-    res.status(200).json({'name': req.params.name, 'date': result, 'resultMsg': resultMsg});
+    res.status(200).json({'name': name, 'date': result, 'resultMsg': resultMsg, 'orig_name': req.params.name});
   }
   else {
     handleError(res, "Failed to find date.", ("Failed to find any namedays for input " + req.params.name ) );
