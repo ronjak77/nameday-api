@@ -182,7 +182,7 @@
 			"19": ["Siiri"],
 			"20": ["Into"],
 			"21": ["Ahti", "Ahto"],
-			"22": ["Puala", "Liina", "Pauliina"],
+			"22": ["Paula", "Liina", "Pauliina"],
 			"23": ["Aatto", "Aatu", "Aadolf"],
 			"24": ["Johannes", "Juhani", "Juha", "Juho", "Jukka", "Jussi", "Janne", "Jani", "Juhana"],
 			"25": ["Uuno"],
@@ -224,7 +224,7 @@
 			"29": ["Olavi", "Olli", "Uolevi", "Uoti"],
 			"30": ["Asta"],
 			"31": ["Helena", "Elena"]
-		}, 
+		},
 		"8": {
 			"1": ["Maire"],
 			"2": ["Kimmo"],
@@ -354,7 +354,7 @@
 			"28": ["Heini"],
 			"29": ["Aimo"],
 			"30": ["Antti", "Antero", "Atte"]
-		}, 
+		},
 		"12": {
 			"1": ["Oskari"],
 			"2": ["Anelma", "Unelma"],

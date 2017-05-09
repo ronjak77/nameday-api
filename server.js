@@ -84,12 +84,15 @@ app.get("/name/:name", function(req, res) {
   var result = "";
   var resultMsg = "";
   var name = req.params.name.charAt(0).toUpperCase() + req.params.name.slice(1);
-
+  var resultDay;
+  var resultMonth;
   for (var i = 11; i >= 0; i--) {
     var month = names2[i];
     for (var j = month.length - 1; j >= 0; j--) {
       if(month[j].indexOf(name) >= 0) {
         result = (j+1) + "." + (i+1) + ".";
+        resultDay = j+1;
+        resultMonth = i+1;
         resultMsg = formatToHuman(i+1, j+1);
         break;
       }
@@ -97,7 +100,7 @@ app.get("/name/:name", function(req, res) {
   }
 
   if(result.length > 0) {
-    res.status(200).json({'name': name, 'date': result, 'resultMsg': resultMsg, 'orig_name': req.params.name, 'other_names': names[month][day] });
+    res.status(200).json({'name': name, 'date': result, 'resultMsg': resultMsg, 'orig_name': req.params.name, 'other_names': names[resultMonth][resultDay] });
   }
   else {
     handleError(res, "Failed to find date.", ("Failed to find any namedays for input " + req.params.name ) );
