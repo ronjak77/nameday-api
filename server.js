@@ -101,12 +101,8 @@ app.get("/name/:name", function(req, res) {
 
   if(result.length > 0) {
     var other_names = names[resultMonth][resultDay];
-    console.log(other_names);
     var location = other_names.indexOf(name);
-    console.log(5, location);
-    console.log(2, other_names);
-    other_names = other_names.splice(location, 1);
-    console.log(other_names);
+    other_names.splice(location, 1);
     res.status(200).json({'name': name, 'date': result, 'resultMsg': resultMsg, 'orig_name': req.params.name, 'other_names': other_names });
   }
   else {
