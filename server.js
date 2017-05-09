@@ -100,7 +100,10 @@ app.get("/name/:name", function(req, res) {
   }
 
   if(result.length > 0) {
-    res.status(200).json({'name': name, 'date': result, 'resultMsg': resultMsg, 'orig_name': req.params.name, 'other_names': names[resultMonth][resultDay] });
+    var other_names = names[resultMonth][resultDay];
+    var location = other_names.indexOf(name);
+    other_names = other_names.splice(location, 1);
+    res.status(200).json({'name': name, 'date': result, 'resultMsg': resultMsg, 'orig_name': req.params.name, 'other_names': other_names });
   }
   else {
     handleError(res, "Failed to find date.", ("Failed to find any namedays for input " + req.params.name ) );
