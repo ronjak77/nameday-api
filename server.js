@@ -84,6 +84,7 @@ app.get("/name/:name", function(req, res) {
 
   var result = "";
   var resultMsg = "";
+  var celebrations = "";
   var name = req.params.name.charAt(0).toUpperCase() + req.params.name.slice(1);
   var resultDay;
   var resultMonth;
@@ -104,7 +105,6 @@ app.get("/name/:name", function(req, res) {
     var other_names = names[resultMonth][resultDay];
     var location = other_names.indexOf(name);
     other_names.splice(location, 1);
-    var celebrations = "";
     if(flags[resultMonth][resultDay]) {
       celebrations = flags[resultMonth][resultDay];
     };
