@@ -1,0 +1,39 @@
+{
+		"2": {
+			"5": ["J.L. Runebergin päivä"],
+			"28": ["Kalevalan päivä, suomalaisen kulttuurin päivä"]
+		},
+		"3": {
+			"19": ["Minna Canthin päivä, tasa-arvon päivä"],
+		},
+		"4": {
+			"4": ["Mikael Agricolan päivä, suomen kielen päivä"],
+			"27": ["Kansallinen veteraanipäivä"],
+		},
+		"5": {
+			"1": ["Vappu, suomalaisen työn päivä"],
+			"9": ["Eurooppa-päivä"],
+			"12": ["J.V. Snellmanin päivä, suomalaisuuden päivä"],
+			"14": ["Äitienpäivä"],
+			"21": ["Kaatuneitten muistopäivä"],
+		},
+		"6": {
+			"4": ["Puolustusvoimain lippujuhlan päivä"],
+			"24": ["Juhannus, Suomen lipun päivä"],
+		},
+		"7": {
+			"6": ["Eino Leinon päivä, runon ja suven päivä"],
+		},
+		"10": {
+			"10": ["Aleksis Kiven päivä, suomalaisen kirjallisuuden päivä"],
+			"24": ["YK:n päivä"],
+		},
+		"11": {
+			"6": ["Ruotsalaisuuden päivä, Kustaa Aadolfin päivä"],
+			"11": ["Isänpäivä"],
+		},
+		"12": {
+			"6": ["Itsenäisyyspäivä"],
+			"8": ["Jean Sibeliuksen päivä, suomalaisen musiikin päivä"],
+		}
+}

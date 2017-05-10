@@ -2,6 +2,7 @@ var express = require("express");
 var path = require("path");
 var names = require("./resources/nimet.json");
 var names2 = require("./resources/nimet2.json");
+var flags = require("./resources/flags.json");
 
 var app = express();
 app.use(express.static(__dirname + "/public"));
@@ -103,7 +104,12 @@ app.get("/name/:name", function(req, res) {
     var other_names = names[resultMonth][resultDay];
     var location = other_names.indexOf(name);
     other_names.splice(location, 1);
-    res.status(200).json({'name': name, 'date': result, 'resultMsg': resultMsg, 'orig_name': req.params.name, 'other_names': other_names });
+    var celebrations = "";
+    if(flags[resultMonth][resultDay]) {
+      celebrations = flags[resultMonth][resultDay];
+    };
+
+    res.status(200).json({'name': name, 'date': result, 'resultMsg': resultMsg, 'orig_name': req.params.name, 'other_names': other_names, 'celebrations': celebrations });
   }
   else {
     handleError(res, "Failed to find date.", ("Failed to find any namedays for input " + req.params.name ) );
@@ -117,8 +123,13 @@ app.get("/:month/:day", function(req, res) {
     var day = req.params.day.toString();
     var heroes = names[month][day];
 
+    var celebrations = "";
+    if(flags[resultMonth][resultDay]) {
+      celebrations = flags[resultMonth][resultDay];
+    };
+
     if(heroes && heroes.length > 0) {
-      res.status(200).json({'name': heroes});
+      res.status(200).json({'name': heroes, 'celebrations': celebrations });
     }
     else {
       handleError(res, err.message, "Failed to get names.");
