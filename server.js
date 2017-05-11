@@ -105,7 +105,7 @@ app.get("/name/:name", function(req, res) {
     var other_names = names[resultMonth][resultDay];
     var location = other_names.indexOf(name);
     other_names.splice(location, 1);
-    if(flags[resultMonth][resultDay].length > 0) {
+    if(flags[resultMonth][resultDay]) {
       celebrations = flags[resultMonth][resultDay];
     };
 
