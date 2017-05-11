@@ -124,8 +124,9 @@ app.get("/:month/:day", function(req, res) {
     var heroes = names[month][day];
 
     var celebrations = "";
-    var celeb = flags[12][6];
-    if(celeb && celeb.length > 0) {
+    console.log(555, month, day);
+
+    if(flags[month][day] != undefined) {
       celebrations = flags[month][day];
     };
 
