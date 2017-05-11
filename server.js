@@ -105,9 +105,11 @@ app.get("/name/:name", function(req, res) {
     var other_names = names[resultMonth][resultDay];
     var location = other_names.indexOf(name);
     other_names.splice(location, 1);
-    // if(flags[resultMonth][resultDay]) {
-    //   celebrations = flags[resultMonth][resultDay];
-    // };
+    if(flags[resultMonth] != undefined) {
+      if(flags[resultMonth][resultDay] != undefined) {
+        celebrations = flags[resultMonth][resultDay];
+      }
+    };
 
     res.status(200).json({'name': name, 'date': result, 'resultMsg': resultMsg, 'orig_name': req.params.name, 'other_names': other_names, 'celebrations': celebrations });
   }
