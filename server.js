@@ -123,13 +123,13 @@ app.get("/:month/:day", function(req, res) {
     var day = req.params.day.toString();
     var heroes = names[month][day];
 
-    // var celebrations = "";
-    // if(flags[resultMonth][resultDay].length > 0) {
-    //   celebrations = flags[resultMonth][resultDay];
-    // };
+    var celebrations = "";
+    if(flags[resultMonth][resultDay]) {
+      celebrations = flags[resultMonth][resultDay];
+    };
 
     if(heroes && heroes.length > 0) {
-      res.status(200).json({'name': heroes });
+      res.status(200).json({'name': heroes, 'celebrations': celebrations });
     }
     else {
       handleError(res, err.message, "Failed to get names.");
