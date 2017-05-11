@@ -125,6 +125,8 @@ app.get("/:month/:day", function(req, res) {
 
     var celebrations = "";
     console.log(555, month, day);
+    month = parseInt(month, 10);
+    day = parseInt(day, 10);
 
     if(flags[month][day] != undefined) {
       celebrations = flags[month][day];
