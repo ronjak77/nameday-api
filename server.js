@@ -128,10 +128,10 @@ app.get("/:month/:day", function(req, res) {
     month = parseInt(month, 10);
     day = parseInt(day, 10);
     console.log(555, month, day);
-
-    if(flags[month][day] != undefined) {
-      celebrations = flags[month][day];
-    };
+    console.log(flags[12][6]);
+    // if(flags[month][day] != undefined) {
+    //   celebrations = flags[month][day];
+    // };
 
     if(heroes && heroes.length > 0) {
       res.status(200).json({'name': heroes, 'celebrations': celebrations });
